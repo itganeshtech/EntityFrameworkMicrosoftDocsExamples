@@ -11,8 +11,8 @@ class Program
 
         // Create
         Console.WriteLine("Inserting a new blog");
-        //how to add new info
-        db.Add(new Blog { Url = "http://blogs.msdn.com/adonet-ganesh", rating = 3 });
+       //how to add new info
+        db.Add(new Blog { Url = "http://blogs.msdn.com/adonet-ganesh",rating=3 });
         db.Add(new Blog { Url = "http://blogs.msdn.com/JustinTimeCompiler" });
         db.Add(new Blog { Url = "http://blogs.msdn.com/Loops" });
         db.Add(new Blog { Url = "http://blogs.msdn.com/Selection_Statements" });
@@ -42,6 +42,6 @@ class Program
         Console.WriteLine("Delete the blog");
 
         //db.Remove(blog);
-        // db.SaveChanges();
+       // db.SaveChanges();
     }
 }
