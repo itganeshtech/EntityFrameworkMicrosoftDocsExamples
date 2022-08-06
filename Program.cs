@@ -1,10 +1,33 @@
-﻿using System;
+﻿using ConsoleApp4;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 class Program
 {
     static void Main(string[] args)
     {
-        using var db = new BloggingContext();
+        //CRUD_Operations();
+
+        //SampleQuery();
+
+        new LinqOperations().TestObject2();
+
+    }
+
+    private static void SampleQuery()
+    {
+        var db = new BloggingContext();
+
+        var blogs = db.Blogs.ToList();
+
+        var posts = db.Posts.Include("Blog")
+            .OrderBy(x => x.PostId)
+            .ToList();
+    }
+
+    private static void CRUD_Operations()
+    {
+        var db = new BloggingContext();
 
         // Note: This sample requires the database to be created before running.
         Console.WriteLine($"Database path: {db.DbPath}.");
@@ -23,6 +46,10 @@ class Program
         var blog = db.Blogs
             .OrderBy(b => b.BlogId)
             .First();
+
+
+        var blogs = (from p in db.Blogs
+                   select p);
 
         /* METHOD - 1
         // Update
